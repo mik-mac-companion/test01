@@ -1,16 +1,16 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Common;
 using GrainInterfaces;
 using Microsoft.Extensions.Configuration;
-using Common;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 IHostBuilder builder = Host.CreateDefaultBuilder(args)
-    .ConfigureAppConfiguration((hostingContext, config) =>
-    {
-        config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-        config.AddEnvironmentVariables();
-    })
+     .ConfigureAppConfiguration((hostingContext, config) =>
+     {
+         config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+         config.AddEnvironmentVariables();
+     })
     .ConfigureServices((hostContext, services) =>
     {
         // Bind AppSettings from appsettings.json
@@ -20,14 +20,14 @@ IHostBuilder builder = Host.CreateDefaultBuilder(args)
     .UseOrleansClient(client =>
     {
         client.UseLocalhostClustering()
-            .ConfigureServices((services) =>
+        .ConfigureServices((services) =>
         {
             // Retrieve the registered AppSettings
             var appSettings = services.BuildServiceProvider().GetRequiredService<AppSettings>();
 
             // Register AppSettings in the Orleans DI container
             services.AddSingleton(appSettings);
-        }); ;
+        });
     })
     .ConfigureLogging(logging => logging.AddConsole())
     .UseConsoleLifetime();

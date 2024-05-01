@@ -18,7 +18,7 @@ IHostBuilder builder = Host.CreateDefaultBuilder(args)
     })
     .UseOrleans(silo =>
     {
-        silo.UseLocalhostClustering()
+        silo.UseLocalhostClustering()        
             .ConfigureLogging(logging => logging.AddConsole())
             .ConfigureServices((services) =>
             {
