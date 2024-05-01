@@ -21,6 +21,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FullSuiteIntegrationTest", 
 		{4884D1C3-D453-4B6C-B07B-2B2D80BE4DB7} = {4884D1C3-D453-4B6C-B07B-2B2D80BE4DB7}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XBox", "XBox", "{B00A2586-5C76-4308-9ECD-F154F3CC8250}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XboxLiveMock", "XboxLiveMock\XboxLiveMock.csproj", "{A798F118-FFD5-460B-9DC4-F6D2FF6C92D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{9A8B1B57-8BF8-4B59-A09E-F082853999AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,9 +57,20 @@ Global
 		{311620CB-3D73-4308-9113-E0C44D2EC138}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{311620CB-3D73-4308-9113-E0C44D2EC138}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{311620CB-3D73-4308-9113-E0C44D2EC138}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A798F118-FFD5-460B-9DC4-F6D2FF6C92D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A798F118-FFD5-460B-9DC4-F6D2FF6C92D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A798F118-FFD5-460B-9DC4-F6D2FF6C92D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A798F118-FFD5-460B-9DC4-F6D2FF6C92D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A8B1B57-8BF8-4B59-A09E-F082853999AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A8B1B57-8BF8-4B59-A09E-F082853999AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A8B1B57-8BF8-4B59-A09E-F082853999AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A8B1B57-8BF8-4B59-A09E-F082853999AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A798F118-FFD5-460B-9DC4-F6D2FF6C92D5} = {B00A2586-5C76-4308-9ECD-F154F3CC8250}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60E94B82-1EBE-4D46-8391-666CE1588147}

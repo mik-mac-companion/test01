@@ -1255,10 +1255,21 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
+      "Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Common.dll": {}
+        }
+      },
       "GrainInterfaces/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "Common": "1.0.0",
           "Microsoft.Orleans.Sdk": "8.1.0"
         },
         "compile": {
@@ -3298,6 +3309,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Common/1.0.0": {
+      "type": "project",
+      "path": "../Common/Common.csproj",
+      "msbuildProject": "../Common/Common.csproj"
+    },
     "GrainInterfaces/1.0.0": {
       "type": "project",
       "path": "../GrainInterfaces/GrainInterfaces.csproj",
@@ -3306,25 +3322,31 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Common >= 1.0.0",
       "GrainInterfaces >= 1.0.0",
       "Microsoft.Extensions.Logging.Abstractions >= 8.0.1",
       "Microsoft.Orleans.Sdk >= 8.1.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mkawi\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Develop\\OrleansHelloWorld\\Grains\\Grains.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Documents\\Work\\test01\\Grains\\Grains.csproj",
       "projectName": "Grains",
-      "projectPath": "C:\\Develop\\OrleansHelloWorld\\Grains\\Grains.csproj",
-      "packagesPath": "C:\\Users\\mkawi\\.nuget\\packages\\",
-      "outputPath": "C:\\Develop\\OrleansHelloWorld\\Grains\\obj\\",
+      "projectPath": "C:\\Users\\User\\Documents\\Work\\test01\\Grains\\Grains.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Documents\\Work\\test01\\Grains\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\mkawi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3338,8 +3360,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Develop\\OrleansHelloWorld\\GrainInterfaces\\GrainInterfaces.csproj": {
-              "projectPath": "C:\\Develop\\OrleansHelloWorld\\GrainInterfaces\\GrainInterfaces.csproj"
+            "C:\\Users\\User\\Documents\\Work\\test01\\Common\\Common.csproj": {
+              "projectPath": "C:\\Users\\User\\Documents\\Work\\test01\\Common\\Common.csproj"
+            },
+            "C:\\Users\\User\\Documents\\Work\\test01\\GrainInterfaces\\GrainInterfaces.csproj": {
+              "projectPath": "C:\\Users\\User\\Documents\\Work\\test01\\GrainInterfaces\\GrainInterfaces.csproj"
             }
           }
         }

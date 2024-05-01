@@ -1254,6 +1254,16 @@
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
         }
+      },
+      "Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Common.dll": {}
+        }
       }
     }
   },
@@ -3284,27 +3294,38 @@
         "system.threading.channels.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Common/1.0.0": {
+      "type": "project",
+      "path": "../Common/Common.csproj",
+      "msbuildProject": "../Common/Common.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Common >= 1.0.0",
       "Microsoft.Orleans.Sdk >= 8.1.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mkawi\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Develop\\OrleansHelloWorld\\GrainInterfaces\\GrainInterfaces.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Documents\\Work\\test01\\GrainInterfaces\\GrainInterfaces.csproj",
       "projectName": "GrainInterfaces",
-      "projectPath": "C:\\Develop\\OrleansHelloWorld\\GrainInterfaces\\GrainInterfaces.csproj",
-      "packagesPath": "C:\\Users\\mkawi\\.nuget\\packages\\",
-      "outputPath": "C:\\Develop\\OrleansHelloWorld\\GrainInterfaces\\obj\\",
+      "projectPath": "C:\\Users\\User\\Documents\\Work\\test01\\GrainInterfaces\\GrainInterfaces.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Documents\\Work\\test01\\GrainInterfaces\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\mkawi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3317,7 +3338,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\User\\Documents\\Work\\test01\\Common\\Common.csproj": {
+              "projectPath": "C:\\Users\\User\\Documents\\Work\\test01\\Common\\Common.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

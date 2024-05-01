@@ -2,16 +2,39 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using GrainInterfaces;
+using Microsoft.Extensions.Configuration;
+using Common;
 
 IHostBuilder builder = Host.CreateDefaultBuilder(args)
+    .ConfigureAppConfiguration((hostingContext, config) =>
+    {
+        config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+        config.AddEnvironmentVariables();
+    })
+    .ConfigureServices((hostContext, services) =>
+    {
+        // Bind AppSettings from appsettings.json
+        var appSettings = hostContext.Configuration.Get<AppSettings>();
+        services.AddSingleton(appSettings);
+    })
     .UseOrleansClient(client =>
     {
-        client.UseLocalhostClustering();
+        client.UseLocalhostClustering()
+            .ConfigureServices((services) =>
+        {
+            // Retrieve the registered AppSettings
+            var appSettings = services.BuildServiceProvider().GetRequiredService<AppSettings>();
+
+            // Register AppSettings in the Orleans DI container
+            services.AddSingleton(appSettings);
+        }); ;
     })
     .ConfigureLogging(logging => logging.AddConsole())
     .UseConsoleLifetime();
 
+
 using IHost host = builder.Build();
+
 await host.StartAsync();
 
 IClusterClient client = host.Services.GetRequiredService<IClusterClient>();

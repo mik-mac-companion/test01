@@ -1,12 +1,9 @@
-﻿using GrainInterfaces;
+﻿using Common;
+using GrainInterfaces;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Orleans.Serialization.Invocation;
-using System;
-using System.IO;
+using Orleans.Concurrency;
 using System.Net;
-using System.Text;
-using System.Text.Json;
 
 namespace Grains;
 
@@ -17,11 +14,17 @@ public class DeserializerDTOMicMacPaddyWhack
     public string url; 
 }
 
+[StatelessWorker]
 public class HelloGrain : Grain, IHello
 {
-    private readonly ILogger _logger;
+    private readonly ILogger<HelloGrain> _logger;
+    private readonly AppSettings _appSettings;
 
-    public HelloGrain(ILogger<HelloGrain> logger) => _logger = logger;
+    public HelloGrain(ILogger<HelloGrain> logger, AppSettings appSettings)
+    {
+        _logger = logger;
+        _appSettings = appSettings;
+    }
 
     ValueTask<string> IHello.SayHello(string greeting)
     {
@@ -82,11 +85,11 @@ public class HelloGrain : Grain, IHello
 
     async Task<string> IHello.PullXboxInventoryData()
     {
-        string uri = "https://inventory.xboxlive.com/users/me/inventory";
+        string uri = $"{_appSettings.Services.XboxLive.Url}/users/me/inventory";
 
         using HttpClient _client = new HttpClient();
-        _client.DefaultRequestHeaders.Accept.Add(AuthorizationHeader.Authorization,);
-        _client.GetAsync().;
+        //_client.DefaultRequestHeaders.Accept.Add(AuthorizationHeader.Authorization,);
+        //_client.GetAsync().;
         using HttpResponseMessage response = await _client.GetAsync(uri);
         response.EnsureSuccessStatusCode();
 
