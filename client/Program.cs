@@ -68,6 +68,8 @@ Console.WriteLine($"""
 
 Console.ReadKey();*/
 
+var test = await friend.PullHttpsData();
+
 var response4 = await friend.Pulldata();
 var response5 = response4.ToString();
 
