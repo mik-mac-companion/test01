@@ -20,6 +20,7 @@ public class DeserializerDTOMicMacPaddyWhack
 [StatelessWorker]
 public class HelloGrain : Grain, IHello
 {
+    private readonly string UserInventoryEndpoint = "/users/me/inventory";
     private readonly ILogger<HelloGrain> _logger;
     private readonly AppSettings _appSettings;
 
@@ -64,9 +65,7 @@ public class HelloGrain : Grain, IHello
 
     async Task<string> IHello.Pulldata()
     {
-        string uri = $"{_appSettings.Services.XboxLive.Url}/users/me/inventory";
-
-
+        string uri = $"{_appSettings.Services.Fairlight.Url}/{UserInventoryEndpoint}";
         using HttpClient _client = new HttpClient();
         using HttpResponseMessage response = await _client.GetAsync(uri);
         response.EnsureSuccessStatusCode();
@@ -83,7 +82,7 @@ public class HelloGrain : Grain, IHello
 
     async Task<string> IHello.PullHttpsData()
     {
-        string uri = $"{_appSettings.Services.XboxLive.Url}/users/me/inventory";
+        string uri = $"{_appSettings.Services.Fairlight.Url}/users/me/inventory";
 
         ///System.Net.ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls13 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
