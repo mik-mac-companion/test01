@@ -1,6 +1,0 @@
-@XboxLiveMock_HostAddress = http://localhost:5201
-
-GET {{XboxLiveMock_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
